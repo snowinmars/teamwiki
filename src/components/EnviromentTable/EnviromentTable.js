@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './EnviromentTable.scss';
 import Loader from './../../components/Loader/Loader'
+import Pinger from './../../components/Pinger/Pinger'
 
 import {componentStatuses, azureApi} from './../../lib/consts';
 import HttpUtils from './../../lib/httpUtils';
 import BootstrapTable from 'react-bootstrap-table-next';
 
-class App extends Component {
+class EnviromentTable extends Component {
     constructor(props) {
         super(props);
 
@@ -20,6 +21,7 @@ class App extends Component {
         return data.items.map((item) => ({
             key: item.enviroment,
             name: item.name,
+            url: item.url,
             enviroment: item.enviroment,
             lastBuild: item.lastBuild,
             lastDeploy: item.lastDeploy,
@@ -46,10 +48,18 @@ class App extends Component {
         })
     }
 
-    render() {
-        console.log(this.state.items);
+    pingerFormatter = (item, row) => {
+        return (
+            <Pinger uri={row.url} interval={10000}/>
+        );
+    }
 
+    render() {
         const columns =  [{
+            dataField: 'pinger',
+            text: ' ',
+            formatter: this.pingerFormatter,
+          }, {
             dataField: 'name',
             text: 'Name'
           }, {
@@ -68,7 +78,9 @@ class App extends Component {
 
         return (
             <div>
-                <Loader isHidden = { this.state.status === componentStatuses.ok }/>
+                <Loader 
+                    isHidden = { this.state.status === componentStatuses.ok }
+                    hasErrors = { this.state.status === componentStatuses.httpQueryFailed }/>
                 <BootstrapTable striped hover data = { this.state.items }
                 columns = { columns }
                 keyField = 'enviroment'/>
@@ -77,4 +89,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default EnviromentTable;

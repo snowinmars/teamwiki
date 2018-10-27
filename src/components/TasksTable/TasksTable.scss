@@ -1,0 +1,13 @@
+.tw-pull-request-flags {
+    margin-right: 0.5em;
+}
+
+.tw-pull-request-is-merged  {
+    content: 'M';
+    color: green;
+}
+
+.tw-pull-request-is-frozen {
+    content: 'F';
+    color: blue;
+}

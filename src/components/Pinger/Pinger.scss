@@ -1,0 +1,19 @@
+.tw-pinger:after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+}
+
+.tw-pinger-initializing:after {
+    background-color: gray;
+}
+
+.tw-pinger-failed:after {
+    background-color: red;
+}
+
+.tw-pinger-successed:after {
+    background-color: green;
+}

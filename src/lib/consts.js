@@ -3,6 +3,7 @@ const azureApi = {
 };
 
 azureApi.getBranchesEnviromentBinding = azureApi.rootUrl + 'getBranchEnvBinding';
+azureApi.tasksForUser = azureApi.rootUrl + 'tasksForUser';
 
 const componentStatuses = {
     ok: 'ok',
