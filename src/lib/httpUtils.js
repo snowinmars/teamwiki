@@ -1,6 +1,6 @@
-const fetchAndHandle = function({ uri, onSuccess, onError }) {
+const fetchAndHandle = function({ uri, method, onSuccess, onError }) {
     fetch(uri, {
-        method: 'POST',
+        method: method,
         headers: {
             'Content-Type': 'application/json',
             'User-Agent': 'Fiddler'

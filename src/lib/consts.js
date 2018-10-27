@@ -4,6 +4,13 @@ const azureApi = {
 
 azureApi.getBranchesEnviromentBinding = azureApi.rootUrl + 'getBranchEnvBinding';
 
-export const Consts = {
-    azureApi
+const componentStatuses = {
+    ok: 'ok',
+    httpQueryFailed: 'httpQueryFailed',
+    initializing: 'initializing',
+}
+
+export {
+    azureApi,
+    componentStatuses
 }
